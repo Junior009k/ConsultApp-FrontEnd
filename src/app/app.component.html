@@ -1,0 +1,20 @@
+
+<div class="cabecera">
+  <img id='doctor' class='doctor' src="./assets/doctor.png">
+  ConsultApp
+</div>
+
+<div>
+  <button>Consultorios</button>
+  <button>Pacientes</button>
+</div>
+
+<!-- negated variable to achieve "if not" -->
+<div *ngIf="!isLoggedIn">
+  Please login, friend.
+</div>
+
+<!-- logic && operator -->
+<div *ngIf="isLoggedIn">
+  Welcome back, friend.
+</div>
