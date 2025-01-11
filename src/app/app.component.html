@@ -5,16 +5,15 @@
 </div>
 
 <div>
-  <button>Consultorios</button>
-  <button>Pacientes</button>
+  <button (click)="loadView(1)">Pacientes</button>
+  <button (click)="loadView(2)">Consultorios</button>  
 </div>
 
-<!-- negated variable to achieve "if not" -->
-<div *ngIf="!isLoggedIn">
-  Please login, friend.
+<div *ngIf="isPatients">
+  <app-consulta-page [title]="'Pacientes'"></app-consulta-page>
 </div>
 
-<!-- logic && operator -->
-<div *ngIf="isLoggedIn">
-  Welcome back, friend.
+<div *ngIf="isOffices">
+  <app-consulta-page [title]="'Consultorios'"></app-consulta-page>
 </div>
+

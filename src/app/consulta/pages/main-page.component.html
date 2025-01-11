@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<hr>
+<div class="row">
+    <div class="col">
+        <consulta-list [characterList]="characters" (onDeleteById)="onDeleteCharacter($event)"></consulta-list>
+    </div>
+    <div class="col">
+        <consulta-add-character (onNewCharacter)="onNewCharacter($event)"></consulta-add-character>
+    </div>
+</div>

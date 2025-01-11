@@ -7,11 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'consultApp';
-  isPaciente= true;
-  isConsultorio= true;
+  isPatients= false;
+  isOffices= false;
 
 
-  loadView():void{
+  loadView(option:number):void{
+
+    if(option==1){
+      this.isPatients= true;
+      this.isOffices= false;
+    }
+
+    if(option==2){
+      this.isPatients= false;
+      this.isOffices= true;
+    }
 
   }
 }
