@@ -1,0 +1,26 @@
+<h4>Agregar {{title}}</h4>
+        <form class="row" (ngSubmit)="emitObject()">
+            <input 
+            type="text" [(ngModel)]="object.name" 
+            name="[name]"
+            class='form-control mb-2' 
+            placeholder="Nombre">
+
+            <input 
+            type="text" 
+            [(ngModel)]="object.lastName" 
+            name="[lastName]"
+            class='form-control mb-2' 
+            placeholder="Apellido">
+
+            <input 
+            type="text" 
+            [(ngModel)]="object.age" 
+            name="[age]"
+            class='form-control mb-2' 
+            placeholder="Edad">
+            <!-- <pre>{{character | json}}</pre> -->
+            <button type="submit" class="btn btn-primary" >
+                Agregar 
+            </button>
+        </form>

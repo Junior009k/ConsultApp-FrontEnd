@@ -1,0 +1,50 @@
+
+    <table class="table table-hover">
+        <thead>
+            <tr >
+                <th *ngFor="let title of listTitle; let i = index">{{title}}</th>
+                <th></th>
+            </tr>
+            <!--<tr>
+                <td>#</td>
+                <td>Junior</td>
+                <td>Bandera</td>
+                <td>Consultorio B</td>
+                <td>DR.Ricardo</td>
+                <td>22/2/2025</td>
+            </tr> -->
+            <!--<tr *ngFor="let country of countries; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{country.flag}}</td>
+                <td><img [src]="country.flags.svg" alt="country.name.common"></td>
+                <td>{{country.name.common}}</td>
+                <td>{{country.capital}}</td>
+                <td>{{country.population | number}}</td>
+                <td><a [routerLink]="['/countries/by/',country.cca3]">Info</a></td>
+            </tr> -->
+            <tr *ngFor="let object of objectList; let i = index">
+                <td>{{i + 1}}</td>
+                <td *ngIf="isSaved && id!=object.id">{{object.name}}</td>
+                <td *ngIf="isSaved && id!=object.id">{{object.lastName}}</td>
+                <td *ngIf="isSaved && id!=object.id">{{object.age}}</td>
+                <td *ngIf="!isSaved && id==object.id"> 
+                    <input type="text" [(ngModel)]="object.name" name="[name]" class='form-control mb-2' placeholder="Nombre">
+                </td>
+                <td *ngIf="!isSaved && id==object.id"> 
+                    <input type="text" [(ngModel)]="object.lastName" name="[lastName]" class='form-control mb-2' placeholder="Apellido">
+                </td>
+                <td *ngIf="!isSaved && id==object.id"> 
+                    <input type="text" [(ngModel)]="object.age" name="[age]" class='form-control mb-2' placeholder="Edad">
+                </td>
+                <td *ngIf="isSaved && id!=object.id">
+                    <button (click)="updatePatient(object)" type="button" class="btn btn-outline-primary btn-sm"><mat-icon>create</mat-icon></button>
+                    <button (click)="deletePatient(object)" type="button" class="btn btn-outline-danger btn-sm"><mat-icon>delete</mat-icon></button>
+                </td>
+                <td *ngIf="!isSaved && id==object.id">
+                    <button (click)="updatePatient(object)" type="button" class="btn btn-outline-primary btn-sm"><mat-icon>saved</mat-icon></button>
+                </td>
+            </tr>
+        </thead>
+    </table>
+
+  

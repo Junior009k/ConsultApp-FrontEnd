@@ -1,0 +1,29 @@
+<h4>Agregar {{title}}</h4>
+        <form class="row" (ngSubmit)="emitObject()">
+            <select class="form-select"  (change)="onChangePatient($event)"  name="[objectPatient]" aria-label="Default select example">
+                <option ></option>
+                <option  *ngFor="let patient of Patients; let i = index" [value]="patient.id" >{{patient.name}}</option>
+            </select>
+            <select class="form-select"  (change)="onChangeOffice($event)"  name="[objectOffice]" aria-label="Default select example">
+                <option ></option>
+                <option *ngFor="let office of Offices; let i = index" [value]="office.id">{{office.name}}</option>
+            </select>
+            
+            <input 
+            type="text" [(ngModel)]="object.date" 
+            name="[date]"
+            class='form-control mb-2' 
+            placeholder="Fecha">
+
+            <input 
+            type="text" 
+            [(ngModel)]="object.description" 
+            name="[description]"
+            class='form-control mb-2' 
+            placeholder="Descripcion">
+            
+            <!-- <pre>{{character | json}}</pre> -->
+            <button type="submit" class="btn btn-primary" >
+                Agregar 
+            </button>
+        </form>

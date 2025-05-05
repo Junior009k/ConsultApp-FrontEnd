@@ -1,0 +1,11 @@
+<h2>Citas</h2>
+<hr>
+<div class="row">
+    <div class="col">
+       <!-- <consulta-list  [objectList]="Objects" (onDeleteById)="onDeleteObject($event)"></consulta-list>-->
+       <consulta-table-appointment [listTitle]="listTitle" [objectList]="Appointments"></consulta-table-appointment>
+    </div>
+    <div class="col">
+        <consulta-add-appointment (onNewObject)="onNewObject($event)"></consulta-add-appointment>
+    </div>
+</div>

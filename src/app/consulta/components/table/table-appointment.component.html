@@ -1,0 +1,57 @@
+
+    <table class="table table-hover">
+        <thead>
+            <tr >
+                <th *ngFor="let title of listTitle; let i = index">{{title}}</th>
+                <th></th>
+            </tr>
+            <!--<tr>
+                <td>#</td>
+                <td>Junior</td>
+                <td>Bandera</td>
+                <td>Consultorio B</td>
+                <td>DR.Ricardo</td>
+                <td>22/2/2025</td>
+            </tr> -->
+            <!--<tr *ngFor="let country of countries; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{country.flag}}</td>
+                <td><img [src]="country.flags.svg" alt="country.name.common"></td>
+                <td>{{country.name.common}}</td>
+                <td>{{country.capital}}</td>
+                <td>{{country.population | number}}</td>
+                <td><a [routerLink]="['/countries/by/',country.cca3]">Info</a></td>
+            </tr> -->
+            <tr *ngFor="let object of objectList; let i = index">
+                <td>{{i + 1}}</td>
+                <td *ngIf="isSaved && id!=object.id">{{object.patient.name}} {{object.patient.lastName}}</td>
+                <td *ngIf="isSaved && id!=object.id">{{object.office.name}} </td>
+                <td *ngIf="isSaved && id!=object.id">{{object.date}}</td>
+                <td *ngIf="isSaved && id!=object.id">{{object.description}}</td>
+                <td *ngIf="!isSaved && id==object.id"> 
+                    <select class="form-select"  (change)="onChangePatient($event)" name="[objectPatient]" aria-label="Default select example">
+                        <option *ngFor="let patient of Patients; let i = index" [value]="patient.id">{{patient.name}}</option>
+                    </select>
+                </td>
+                <td *ngIf="!isSaved && id==object.id"> 
+                    <select class="form-select"  (change)="onChangeOffice($event)"  name="[objectOffice]" aria-label="Default select example">
+                        <option *ngFor="let office of Offices; let i = index" [value]="office.id">{{office.name}}</option>
+                    </select> </td>
+                <td *ngIf="!isSaved && id==object.id"> 
+                    <input type="text" [(ngModel)]="object.date" name="[date]" class='form-control mb-2' placeholder="Fecha">
+                </td>
+                <td *ngIf="!isSaved && id==object.id"> 
+                    <input type="text" [(ngModel)]="object.description" name="[description]" class='form-control mb-2' placeholder="Descripcion">
+                </td>
+                <td>
+                    <td *ngIf="isSaved && id!=object.id">
+                        <button (click)="updateAppointment(object)" type="button" class="btn btn-outline-primary btn-sm"><mat-icon>create</mat-icon></button>
+                        <button (click)="deleteAppointment(object)" type="button" class="btn btn-outline-danger btn-sm"><mat-icon>delete</mat-icon></button>
+                    </td>
+                    <td *ngIf="!isSaved && id==object.id">
+                        <button (click)="updateAppointment(object)" type="button" class="btn btn-outline-primary btn-sm"><mat-icon>saved</mat-icon></button>
+                    </td>
+            </tr>
+        </thead>
+    </table>
+

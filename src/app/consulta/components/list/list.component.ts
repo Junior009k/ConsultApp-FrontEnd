@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component,Input, Output ,EventEmitter} from '@angular/core';
-import { Character } from '../../interfaces/character.interface';
+import { Object } from '../../interfaces/Object.interface';
 
 @Component({
     selector: 'consulta-list',
-    templateUrl: './list.component.html',
-    styleUrl: './list.component.css'
+    templateUrl: './list.component.html'
 })
 export class ListComponent { 
     @Output()
@@ -13,7 +12,7 @@ export class ListComponent {
     @Output()
     public onDeleteById: EventEmitter<string> = new EventEmitter();
     @Input()
-    public characterList:Character[]=[
+    public objectList:Object[]=[
         {
             name:'Trunks', 
             power:10
@@ -28,12 +27,12 @@ export class ListComponent {
         this.onDeleteId.emit(this.index)
     }
 */
-    public characterTemplate:Character= {name:'',power:0};
-    onDeleteByIdCharacter(character:Character):void{
+    public objectTemplate:Object= {name:'',power:0};
+    onDeleteByIdObject(object:Object):void{
         //Emitir el id del personaje
         //console.log(character)
-        this.characterTemplate= character 
+        this.objectTemplate= object 
         //console.log(this.characterTemplate.id)
-        this.onDeleteById.emit(this.characterTemplate.id)
+        this.onDeleteById.emit(this.objectTemplate.id)
     }
 }

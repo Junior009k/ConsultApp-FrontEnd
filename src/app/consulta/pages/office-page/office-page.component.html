@@ -1,0 +1,11 @@
+<h2>Oficinas</h2>
+<hr>
+<div class="row">
+    <div class="col">
+       <!-- <consulta-list  [objectList]="Objects" (onDeleteById)="onDeleteObject($event)"></consulta-list>-->
+      <consulta-table-office [listTitle]="listTitle" [objectList]="offices"></consulta-table-office>
+    </div>
+    <div class="col">
+        <consulta-add-office (onNewObject)="onNewObject($event)"></consulta-add-office>
+    </div>
+</div>
