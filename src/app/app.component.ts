@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   isPatients         = false;
   isOffices          = false;
   isCreateAppointment= false;
-  isPush = false;
+  isPush = true;
 
 //Esto esta mal, solo es construyendo algo basico
   loadView(option:number):void{

@@ -41,8 +41,8 @@ export class ConsultaService {
     public async initFirebase()
     {
        this.loadAppointmentFromFirestore();
-        //this.loadOfficeFromFirestore();
-        //this.loadPatientFromFirestore();
+        this.loadOfficeFromFirestore();
+        this.loadPatientFromFirestore();
     }
 
     public async loadPatientFromFirestore()
