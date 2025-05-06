@@ -34,7 +34,7 @@ export class TablePatientComponent {
   
   public deletePatient(pat:Patient):void{
     if(pat.id!=null){
-      //this.consultaService.deleteObjectFirebase("Patient",pat.id)
+      this.consultaService.deleteObjectFirebase("Patient",pat.id)
       this.consultaService.patients= this.consultaService.patients.filter(patient => patient.id !== pat.id);
     }
   }

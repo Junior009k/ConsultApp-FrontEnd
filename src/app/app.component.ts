@@ -8,7 +8,7 @@ import { ConsultaService } from './consulta/services/consulta.service';
 export class AppComponent implements OnInit {
   constructor(private consultaService:ConsultaService){}
   ngOnInit(){
-  // this.consultaService.initFirebase();
+  //
   }
   title = 'consultApp';
   isNothing          = false;
