@@ -4,7 +4,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConsultaModule } from './consulta/Consulta.module';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+//import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ConsultaModule
   ],
   providers: [
-    provideClientHydration(),
-    provideAnimationsAsync()
+    provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })
