@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { mainPageComponent } from './pages/main-page.component';
 import { ListComponent } from './components/list/list.component';
 import { AddPatientComponent } from './components/add/add-patient.component';
 import { AddOfficeComponent } from './components/add/add-office.component';
@@ -14,19 +13,24 @@ import { AddAppointmentComponent } from './components/add/add-appointment.compon
 import { TableAppointmentComponent } from './components/table/table-appointment.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavBarComponent } from './components/NavBar/nav-bar/nav-bar.component';
+import { AppRoutingModule } from '../app-routing.module';
 @NgModule({
-  declarations: [mainPageComponent,ListComponent,AddPatientComponent, AddOfficeComponent,AddAppointmentComponent, TablePatientComponent,TableOfficeComponent,TableAppointmentComponent, PatientPageComponent, OfficePageComponent, CreateAppointmentPageComponent],
+  declarations: [ListComponent,AddPatientComponent, AddOfficeComponent,AddAppointmentComponent, TablePatientComponent,TableOfficeComponent,TableAppointmentComponent, PatientPageComponent, OfficePageComponent, CreateAppointmentPageComponent, DashboardComponent, NavBarComponent],
   imports: [
     CommonModule,
     FormsModule,
     MatSlideToggleModule,
-    MatIconModule
+    MatIconModule, 
+    AppRoutingModule
   ],
   exports:[
-    mainPageComponent,
     PatientPageComponent,
     OfficePageComponent,
-    CreateAppointmentPageComponent
+    CreateAppointmentPageComponent,
+    DashboardComponent,
+    NavBarComponent
     
 ]
 })

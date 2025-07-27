@@ -40,6 +40,10 @@ export class ConsultaService {
 
     public async initFirebase()
     {
+
+
+
+        console.log('iniciando firebase')
        this.loadAppointmentFromFirestore();
         this.loadOfficeFromFirestore();
         this.loadPatientFromFirestore();
@@ -94,6 +98,24 @@ export class ConsultaService {
     {
         await updateDoc(doc(db,"Appointment",id),{"patient":object.patient,"office":object.office,"date":object.date,"description":object.description});
     }
+
+    public getAppointmentAttended()
+    {
+        return this.appointments.filter(appointment =>this.compararFecha(appointment.date)==true)
+    }
+
+    public getAppointmentInAttend()
+    {
+        return this.appointments.filter(appointment =>this.compararFecha(appointment.date)!=true)
+    }
+    public compararFecha(fechaComparar:string) 
+    {
+        let fecha = new Date(fechaComparar);
+        let fechaActual = new Date();
+        if (fechaActual >= fecha)return true;
+        else return false;
+    }
+    
     constructor() { }
     
 }

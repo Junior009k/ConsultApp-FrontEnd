@@ -3,7 +3,8 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConsultaModule } from './consulta/Consulta.module';
+import { ConsultaModule } from './consulta/Consulta.module'
+import { AuthModule } from './auth/auth.module';
 //import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ConsultaModule } from './consulta/Consulta.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ConsultaModule
+    ConsultaModule,
+    AuthModule
   ],
   providers: [
     provideClientHydration()

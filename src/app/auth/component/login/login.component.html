@@ -1,0 +1,208 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+    
+    <!-- Lado izquierdo - Panel informativo -->
+    <div class="col-lg-6 d-none d-lg-flex bg-primary text-white p-0">
+      <div class="d-flex flex-column justify-content-center align-items-center w-100 p-5">
+        <div class="text-center">
+          <i class="fas fa-shield-alt display-1 mb-4"></i>
+          <h2 class="fw-bold mb-4">¡Bienvenido de vuelta!</h2>
+          <p class="lead mb-5">Accede a tu cuenta para disfrutar de todas nuestras funcionalidades</p>
+          
+          <div class="row text-start">
+            <div class="col-12 mb-3">
+              <i class="fas fa-check-circle me-3"></i>
+              <span>Acceso seguro y confiable</span>
+            </div>
+            <div class="col-12 mb-3">
+              <i class="fas fa-check-circle me-3"></i>
+              <span>Dashboard personalizado</span>
+            </div>
+            <div class="col-12 mb-3">
+              <i class="fas fa-check-circle me-3"></i>
+              <span>Soporte técnico 24/7</span>
+            </div>
+            <div class="col-12">
+              <i class="fas fa-check-circle me-3"></i>
+              <span>Actualizaciones automáticas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lado derecho - Formulario de login -->
+    <div class="col-lg-6 d-flex align-items-center bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-10 col-xl-8">
+            
+            <!-- Cabecera -->
+            <div class="text-center mb-5">
+              <div class="mb-4">
+                <i class="fas fa-user-circle display-3 text-primary"></i>
+              </div>
+              <h3 class="fw-bold text-dark">Iniciar Sesión</h3>
+              <p class="text-muted">Ingresa tus credenciales para continuar</p>
+            </div>
+
+            <!-- Alerta de error -->
+            <div class="alert alert-danger alert-dismissible d-flex align-items-center" 
+                 *ngIf="loginError" role="alert">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              <div>
+                Credenciales incorrectas. Intenta con: <strong>adminaexample.com</strong> / <strong>123456</strong>
+              </div>
+              <button type="button" class="btn-close" (click)="dismissError()"></button>
+            </div>
+
+            <!-- Formulario -->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+              
+              <!-- Campo Email -->
+              <div class="mb-4">
+                <label for="email" class="form-label fw-semibold">
+                  <i class="fas fa-envelope me-2 text-primary"></i>Correo Electrónico
+                </label>
+                <input 
+                  type="email" 
+                  class="form-control form-control-lg border-2"
+                  [class.is-invalid]="submitted && f['email'].errors"
+                  [class.is-valid]="submitted && !f['email'].errors && f['email'].value"
+                  id="email" 
+                  formControlName="email"
+                  placeholder="ejemplo@correo.com"
+                  autocomplete="email">
+                
+                <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
+                  <div *ngIf="f['email'].errors['required']">
+                    <i class="fas fa-times-circle me-1"></i>El correo electrónico es requerido
+                  </div>
+                  <div *ngIf="f['email'].errors['email']">
+                    <i class="fas fa-times-circle me-1"></i>Ingresa un correo electrónico válido
+                  </div>
+                </div>
+              </div>
+
+              <!-- Campo Contraseña -->
+              <div class="mb-4">
+                <label for="password" class="form-label fw-semibold">
+                  <i class="fas fa-lock me-2 text-primary"></i>Contraseña
+                </label>
+                <div class="input-group">
+                  <input 
+                    [type]="showPassword ? 'text' : 'password'" 
+                    class="form-control form-control-lg border-2"
+                    [class.is-invalid]="submitted && f['password'].errors"
+                    [class.is-valid]="submitted && !f['password'].errors && f['password'].value"
+                    id="password" 
+                    formControlName="password"
+                    placeholder="••••••••"
+                    autocomplete="current-password">
+                  <button 
+                    class="btn btn-outline-secondary border-2" 
+                    type="button" 
+                    (click)="togglePasswordVisibility()">
+                    <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                  </button>
+                </div>
+                
+                <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
+                  <div *ngIf="f['password'].errors['required']">
+                    <i class="fas fa-times-circle me-1"></i>La contraseña es requerida
+                  </div>
+                  <div *ngIf="f['password'].errors['minlength']">
+                    <i class="fas fa-times-circle me-1"></i>La contraseña debe tener al menos 6 caracteres
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recordarme y Olvidé contraseña -->
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                  <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="rememberMe" 
+                    formControlName="rememberMe">
+                  <label class="form-check-label" for="rememberMe">
+                    Recordarme
+                  </label>
+                </div>
+                <a href="#" class="text-primary text-decoration-none">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
+
+              <!-- Botón de Login -->
+              <div class="d-grid mb-4">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary btn-lg border-0"
+                  [disabled]="loading"
+                  [class.btn-secondary]="loading">
+                  
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                  </span>
+                  <i *ngIf="!loading" class="fas fa-sign-in-alt me-2"></i>
+                  {{ loading ? 'Iniciando sesión...' : 'Iniciar Sesión' }}
+                </button>
+              </div>
+
+              <!-- Separador -->
+              <div class="text-center mb-4">
+                <hr class="my-4">
+                <span class="bg-light px-3 text-muted">o continúa con</span>
+              </div>
+
+              <!-- Botones de redes sociales -->
+              <div class="row g-2 mb-4">
+                <div class="col-6">
+                  <button 
+                    type="button" 
+                    class="btn btn-outline-danger w-100 border-2"
+                    (click)="onGoogleLogin()">
+                    <i class="fab fa-google me-2"></i>Google
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button 
+                    type="button" 
+                    class="btn btn-outline-primary w-100 border-2"
+                    (click)="onFacebookLogin()">
+                    <i class="fab fa-facebook-f me-2"></i>Facebook
+                  </button>
+                </div>
+              </div>
+
+              <!-- Enlace de registro -->
+              <div class="text-center">
+                <span class="text-muted">¿No tienes una cuenta? </span>
+                <a routerLink="/register" class="text-primary text-decoration-none fw-semibold">
+                  Regístrate aquí
+                </a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Información de demo -->
+<div class="position-fixed bottom-0 end-0 m-3">
+  <div class="card border-primary" style="max-width: 300px;">
+    <div class="card-header bg-primary text-white">
+      <i class="fas fa-info-circle me-2"></i>Demo
+    </div>
+    <div class="card-body">
+      <p class="card-text small mb-2">
+        <strong>Email:</strong> admin example.com<br>
+        <strong>Password:</strong> 123456
+      </p>
+    </div>
+  </div>
+</div>

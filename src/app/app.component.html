@@ -1,33 +1,8 @@
 
-<div class="d-flex flex-row mb-3">
-    <img class="p-2" id='doctor' class='doctor' src="./assets/doctor.png">
-    <h1 class="p-2 Title"> ConsultApp </h1> 
-</div>
-
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-primary" (click)="loadView(0)">Inicios</button>
-  <button type="button" class="btn btn-primary" (click)="loadView(1)">Pacientes</button>
-  <button type="button" class="btn btn-primary" (click)="loadView(2)">Consultorios</button>  
-  <button type="button" class="btn btn-primary" (click)="loadView(3)">Crear Citas</button>  
-</div>
+<!--<consulta-nav-bar></consulta-nav-bar>-->
+<router-outlet />
 <!--Hay que cambiar las condicionales por rutas-->
 <!--<div *ngIf="isPatients">
   <app-consulta-page [title]="'Pacientes'"></app-consulta-page>
 </div>-->
-
-<div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3" *ngIf="isNothing">
-  <H1>Bienvenido!!!</H1>
-</div>
-
-<div *ngIf="isPatients">
-  <consulta-patient-page></consulta-patient-page>
-</div>
-
-<div *ngIf="isOffices">
-  <consulta-office-page></consulta-office-page>
-</div>
-
-<div *ngIf="isCreateAppointment">
-  <consulta-create-appointment-page></consulta-create-appointment-page>
-</div>
 

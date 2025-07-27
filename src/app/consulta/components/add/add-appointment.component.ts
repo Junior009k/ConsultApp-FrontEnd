@@ -60,6 +60,8 @@ export class AddAppointmentComponent {
       if(this.object.description.length === 0 || this.object.office.name.length===0 || this.object.patient.name.length===0 )return;
 
        this.onNewObject.emit(this.object)
+       this.object.patient={name:'',lastName:'',age:0}
+       this.object.office= {name:'', place:''}
        this.object =  {patient:this.patient, office:this.office,date:'',description:''}
       ;
     }
